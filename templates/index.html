@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance Cost Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="app">
+        <h1>INSURANCE COST PREDICTION</h1>
+        <div class="form-container">
+            <form action="/predict" method="post">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required><br>
+
+                <label for="bmi">BMI:</label>
+                <input type="number" step="0.1" id="bmi" name="bmi" required><br>
+
+                <label for="children">Children:</label>
+                <input type="number" id="children" name="children" required><br>
+
+                <label for="sex">Sex:</label>
+                <select id="sex" name="sex" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select><br>
+
+                <label for="smoker">Smoker:</label>
+                <select id="smoker" name="smoker" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select><br>
+
+                <label for="region">Region:</label>
+                <select id="region" name="region" required>
+                    <option value="southwest">Southwest</option>
+                    <option value="southeast">Southeast</option>
+                    <option value="northwest">Northwest</option>
+                    <option value="northeast">Northeast</option>
+                </select><br>
+
+                <button type="submit">Predict</button>
+            </form>
+            {% if prediction %}
+                <h2>Predicted Charges: ₹{{ prediction }}</h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
